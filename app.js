@@ -11,7 +11,7 @@ app.get('/', function(request,response){
 })
 
 // Request handler for "/hello/:name
-app.get('/hello/:name', function(request,response){
+app.get('/hello/:name(\\w+)', function(request,response){
     response.writeHead(200, {"Context-Type":"text/plain"});
     response.write("Hello " + request.params.name);
     response.end();
