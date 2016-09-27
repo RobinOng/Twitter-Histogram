@@ -65,12 +65,14 @@ app.get('/histogram/:twittername(\\w+)', function(request,response) {
                     object[key] = countIn(differenceTimeArray,j);
                 }
                 console.log(object);
+
+                // Display result
+                response.writeHead(200, {"Context-Type":"application/json"});
+                response.write(JSON.stringify(object));
+                response.end();
             }
         }
     });
-    response.writeHead(200, {"Context-Type":"text/plain"});
-    response.write("Histogram " + request.params.twittername);
-    response.end();
 });
 
 // Create HTTP Server and listen to port
