@@ -34,7 +34,26 @@ app.get('/histogram/:twittername(\\w+)', function(request,response) {
             if (tweets[0] == undefined){
                 console.log("There is no tweet from " + request.params.twittername);
             }else{
+              // Get current local time
+                var currentTime = new Date();
+                var currentTimeMsec = currentTime.getTime();
+
+                // Convert msec to hour
+                var hour2MsecConversion = 3600000;
+
                 // Process information from Twitter
+                var i = 0;
+                var tweetTime;
+                var tweetTimeMsec;
+                var differenceTime = [];
+
+                do{
+                    tweetTime = new Date(tweets[i].created_at);
+                    tweetTimeMsec = tweetTime.getTime();
+                    differenceTime[i] = (currentTimeMsec - tweetTimeMsec)/hour2MsecConversion;
+                    i++;
+                } while (((currentTimeMsec - tweetTimeMsec)/hour2MsecConversion)<=24);
+                console.log(differenceTime);
             }
         }
     });
