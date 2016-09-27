@@ -57,7 +57,6 @@ app.get('/histogram/:twittername(\\w+)', function(request,response) {
                     differenceTimeArray[i] = Math.floor(differenceTime);
                     i++;
                 } while (differenceTime<=24);
-                console.log(differenceTimeArray);
 
                 // Placing processed result into object
                 var object = {};
@@ -66,7 +65,6 @@ app.get('/histogram/:twittername(\\w+)', function(request,response) {
                     key = j.toString();
                     object[key] = countIn(differenceTimeArray,j);
                 }
-                console.log(object);
 
                 // Display result
                 response.writeHead(200, {"Context-Type":"application/json"});
