@@ -45,15 +45,26 @@ app.get('/histogram/:twittername(\\w+)', function(request,response) {
                 var i = 0;
                 var tweetTime;
                 var tweetTimeMsec;
-                var differenceTime = [];
+                var differenceTime;
+                var differenceTimeArray = [];
 
                 do{
                     tweetTime = new Date(tweets[i].created_at);
                     tweetTimeMsec = tweetTime.getTime();
-                    differenceTime[i] = (currentTimeMsec - tweetTimeMsec)/hour2MsecConversion;
+                    differenceTime = (currentTimeMsec - tweetTimeMsec)/hour2MsecConversion;
+                    differenceTimeArray[i] = Math.floor(differenceTime);
                     i++;
-                } while (((currentTimeMsec - tweetTimeMsec)/hour2MsecConversion)<=24);
-                console.log(differenceTime);
+                } while (differenceTime<=24);
+                console.log(differenceTimeArray);
+
+                // Placing processed result into object
+                var object = {};
+                var key;
+                for (var j = 0; j < 24; j++){
+                    key = j.toString();
+                    object[key] = countIn(differenceTimeArray,j);
+                }
+                console.log(object);
             }
         }
     });
@@ -67,3 +78,12 @@ app.listen(port, function(){
     console.log("Server is now running...");
 })
 
+function countIn(array,value){
+    var count = 0;
+    for (var k = 0; k < array.length; k++){
+        if (array[k] == value){
+            count++;
+        }
+    }
+    return count;
+}
