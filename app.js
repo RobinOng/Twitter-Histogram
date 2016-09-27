@@ -32,7 +32,9 @@ app.get('/histogram/:twittername(\\w+)', function(request,response) {
         if (!error){
             // Check users with no tweet
             if (tweets[0] == undefined){
-                console.log("There is no tweet from " + request.params.twittername);
+                response.writeHead(200, {"Context-Type":"text/plain"});
+                response.write("There is no tweet from " + request.params.twittername);
+                response.end();
             }else{
               // Get current local time
                 var currentTime = new Date();
