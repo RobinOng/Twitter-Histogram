@@ -30,7 +30,12 @@ app.get('/hello/:name(\\w+)', function(request,response){
 app.get('/histogram/:twittername(\\w+)', function(request,response) {
     client.get('statuses/user_timeline', { screen_name: request.params.twittername, count: 1000 }, function(error, tweets) {
         if (!error){
-            console.log(tweets[0]);
+            // Check users with no tweet
+            if (tweets[0] == undefined){
+                console.log("There is no tweet from " + request.params.twittername);
+            }else{
+                // Process information from Twitter
+            }
         }
     });
     response.writeHead(200, {"Context-Type":"text/plain"});
@@ -42,3 +47,4 @@ app.get('/histogram/:twittername(\\w+)', function(request,response) {
 app.listen(port, function(){
     console.log("Server is now running...");
 })
+
