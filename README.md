@@ -36,6 +36,51 @@ In Terminal (on macOS) or Command Prompt (on Windows), navigate the directory to
 
 After running this command, if the credentials are correct, there should a line of code stating `Server is now running...`, and you are good to go.
 
+## Examples
+#### Example 1
+Input:
+```
+http://localhost:3000/
+```
+
+Output:
+```
+Try /hello/:name
+```
+
+#### Example 2
+Input:
+```
+http://localhost:3000/hello/Robin_Ong123
+```
+
+Output:
+```
+Hello Robin_Ong123
+```
+
+#### Example 3
+Input:
+```
+http://localhost:3000/histogram/BBCNews
+```
+
+Output:
+```
+{"0":7,"1":6,"2":6,"3":2,"4":0,"5":2,"6":2,"7":3,"8":1,"9":0,"10":0,"11":14,"12":4,"13":4,"14":1,"15":1,"16":3,"17":1,"18":9,"19":11,"20":3,"21":0,"22":5,"23":1}
+```
+
+#### Example 4 (Twitter ID without tweet)
+Input:
+```
+http://localhost:3000/histogram/sportparagon
+```
+
+Output:
+```
+There is no tweet from sportparagon
+```
+
 ## Acknowledgement
 * Test designed by BigCommerce.
 
