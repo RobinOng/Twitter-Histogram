@@ -1,4 +1,15 @@
 # Twitter-Histogram
+This app is created to calculate tweets per hour in a day of a Twitter user.
+
+There will be 3 HTTP endpoints that can be access by users:
+#### 1) HTTP endpoint 1: http://localhost:3000/
+If you point your web browser to `http://localhost:3000/`, you should see the text of `Try /hello/:name`.
+
+#### 2) HTTP endpoint 2: http://localhost:3000/hello/:name
+If you point your web browser to `http://localhost:3000/hello/:name`, where `:name` is an input by the user that can consists character of a-z, A-Z, 0-9 and _ (underscore), you should see the text of `Hello :name`.
+
+#### 3) HTTP endpoint 3: http://localhost:3000/histogram/:twitterid
+If you point your web browser to `http://localhost:3000/histogram/:twitterid`, where `:twitterid` is an input by the user that can consists character of a-z, A-Z, 0-9 and _ (underscore), you should see a JSON response of number of tweets per hour the `:twitterid` posted within 24 hours. 
 
 ## Getting Started
 #### 1) Download the file 
