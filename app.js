@@ -1,4 +1,4 @@
-var express = require('express') // Import Express framework
+var express = require('express'); // Import Express framework
 var twitter = require('twitter');// Import Twitter npm
 var env = require('dotenv').config({path: 'api.env'}); //Import dotenv npm
 var port = 3000; // Port number
