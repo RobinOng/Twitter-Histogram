@@ -1,0 +1,26 @@
+{
+  "name": "twitter-histogram",
+  "version": "1.0.0",
+  "description": "Twitter Histogram by BigCommerce",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "mocha": "^3.1.0",
+    "twitter": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha --timeout 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robinkjong/Twitter-Histogram.git"
+  },
+  "author": "Robin Ong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robinkjong/Twitter-Histogram/issues"
+  },
+  "homepage": "https://github.com/robinkjong/Twitter-Histogram#readme"
+}
