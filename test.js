@@ -37,4 +37,12 @@ describe('/', function () {
     });
 });
 
+describe('/test', function () {
+    it('should return 404', function (done) {
+        http.get('http://localhost:3000/test', function (res) {
+            assert.equal(404, res.statusCode);
+            done();
+        });
+    });
+});
 
