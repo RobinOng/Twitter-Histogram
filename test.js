@@ -13,6 +13,8 @@ describe('server', function () {
 var assert = require('assert');
 var http = require('http');
 
+
+// Test if part 1 if working
 describe('/', function () {
     it('should return 200', function (done) {
         http.get('http://localhost:3000', function (res) {
@@ -37,6 +39,7 @@ describe('/', function () {
     });
 });
 
+// Test if other path returns 404
 describe('/test', function () {
     it('should return 404', function (done) {
         http.get('http://localhost:3000/test', function (res) {
@@ -46,6 +49,7 @@ describe('/test', function () {
     });
 });
 
+// Test if part 2 is working
 describe('/hello/BigCommerce_123', function () {
     it('should return 200', function (done) {
         http.get('http://localhost:3000/hello/BigCommerce_123', function (res) {
@@ -70,6 +74,7 @@ describe('/hello/BigCommerce_123', function () {
     });
 });
 
+// Test if :name only consists of a-z, A-Z, 0-9 and _(underscore)
 describe('/hello/BigCommerce@', function () {
     it('should return 404', function (done) {
         http.get('http://localhost:3000/hello/BigCommerce@', function (res) {
@@ -79,6 +84,7 @@ describe('/hello/BigCommerce@', function () {
     });
 });
 
+// Test if part 3(User without tweet) is working
 describe('/histogram/sportparagon', function () {
     it('should return 200', function (done) {
         http.get('http://localhost:3000/histogram/sportparagon', function (res) {
@@ -103,6 +109,7 @@ describe('/histogram/sportparagon', function () {
     });
 });
 
+// Test if part 3(User with tweet) is working
 describe('/histogram/BigCommerce', function () {
     it('should return 200', function (done) {
         http.get('http://localhost:3000/histogram/BigCommerce', function (res) {
