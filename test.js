@@ -69,3 +69,12 @@ describe('/hello/BigCommerce_123', function () {
         });
     });
 });
+
+describe('/hello/BigCommerce@', function () {
+    it('should return 404', function (done) {
+        http.get('http://localhost:3000/hello/BigCommerce@', function (res) {
+            assert.equal(404, res.statusCode);
+            done();
+        });
+    });
+});
