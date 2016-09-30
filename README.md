@@ -26,15 +26,15 @@ Environmental variables are a set of values that are specific to the environment
 Create `api.env` in the root directory of your project. Add environment-specific variables on new lines in the form of NAME=VALUE as shown below. Double or single quotes are not needed around the values.
 
 ```
-consumer_key=<Insert Consumer Key HERE>
-consumer_secret=<Insert Consumer Secret>
-access_token_key=<Insert Access Token>
-access_token_secret=<Insert Access Token Secret>
+consumer_key="Insert Consumer Key HERE"
+consumer_secret="Insert Consumer Secret"
+access_token_key="Insert Access Token"
+access_token_secret="Insert Access Token Secret"
 ```
 #### 4) Run 'app.js'
 In Terminal (on macOS) or Command Prompt (on Windows), navigate the directory to the root directory of your project. Then, run the app with the `node` command by entering `node app.js`.
 
-After running this command, if the credentials are correct, there should a line of code stating `Server is now running...`, and you are good to go.
+After running this command, there should a line of code stating `Server is now running...`.
 
 ## Examples
 #### Example 1
