@@ -46,3 +46,26 @@ describe('/test', function () {
     });
 });
 
+describe('/hello/BigCommerce_123', function () {
+    it('should return 200', function (done) {
+        http.get('http://localhost:3000/hello/BigCommerce_123', function (res) {
+            assert.equal(200, res.statusCode);
+            done();
+        });
+    });
+
+    it('should say "Hello BigCommerce_123"', function (done) {
+        http.get('http://localhost:3000/hello/BigCommerce_123', function (res) {
+            var str = '';
+
+            res.on('data', function (data) {
+                str += data;
+            });
+
+            res.on('end', function () {
+                assert.equal('Hello BigCommerce_123', str);
+                done();
+            });
+        });
+    });
+});
