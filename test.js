@@ -1,23 +1,23 @@
 var server = require('./app');
 
 // To test path other than the 3 HTTP endpoints
-var testName = 'testing';
+var testName = 'testing'; //Enter path that are outside the 3 HTTP endpoints specified.
 var testURL = 'http://localhost:3000/' + testName;
 
 // To test valid Part 2 URL
-var name1 = 'BigCommerce_123';
+var name1 = 'BigCommerce_123'; //Enter a valid name consists of a-z,A-Z,0-9,_(underscore)
 var testURL21 = 'http://localhost:3000/hello/' + name1;
 
 //To test invalid Part 2 URL
-var name2 = 'BigCommerce@';
+var name2 = 'BigCommerce@'; //Enter an invalid name that consists of character other than a-z,A-Z,0-9,_(underscore)
 var testURL22 = 'http://localhost:3000/hello/' + name2;
 
 //To test twitterID without tweet
-var twitterID1 = 'sportparagon';
+var twitterID1 = 'sportparagon'; //Enter a twitterID who have 0 tweet
 var testURL31 = 'http://localhost:3000/histogram/' + twitterID1;
 
 //To test twitterID with tweet
-var twitterID2 = 'BigCommerce';
+var twitterID2 = 'BigCommerce'; //Enter a twitterID who have at least 1 tweet
 var testURL32 = 'http://localhost:3000/histogram/' + twitterID2;
 
 describe('server', function () {
