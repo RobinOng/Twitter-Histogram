@@ -20,4 +20,21 @@ describe('/', function () {
             done();
         });
     });
+
+    it('should say "Try /hello/:name"', function (done) {
+        http.get('http://localhost:3000', function (res) {
+            var str = '';
+
+            res.on('data', function (data) {
+                str += data;
+            });
+
+            res.on('end', function () {
+                assert.equal('Try /hello/:name', str);
+                done();
+            });
+        });
+    });
 });
+
+
