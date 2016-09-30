@@ -1,4 +1,16 @@
 var server = require('./app');
+var testName = 'testing';
+var testURL = 'http://localhost:3000/' + testName;
+
+var name1 = 'BigCommerce_123';
+var name2 = 'BigCommerce@';
+var testURL21 = 'http://localhost:3000/hello/' + name1;
+var testURL22 = 'http://localhost:3000/hello/' + name2;
+
+var twitterID1 = 'sportparagon';
+var twitterID2 = 'BigCommerce';
+var testURL31 = 'http://localhost:3000/histogram/' + twitterID1;
+var testURL32 = 'http://localhost:3000/histogram/' + twitterID2;
 
 describe('server', function () {
     before(function () {
@@ -15,7 +27,7 @@ var http = require('http');
 
 
 // Test if part 1 if working
-describe('/', function () {
+describe('http://localhost:3000/', function () {
     it('should return 200', function (done) {
         http.get('http://localhost:3000', function (res) {
             assert.equal(200, res.statusCode);
@@ -40,9 +52,9 @@ describe('/', function () {
 });
 
 // Test if other path returns 404
-describe('/test', function () {
+describe(testURL, function () {
     it('should return 404', function (done) {
-        http.get('http://localhost:3000/test', function (res) {
+        http.get(testURL, function (res) {
             assert.equal(404, res.statusCode);
             done();
         });
@@ -50,16 +62,16 @@ describe('/test', function () {
 });
 
 // Test if part 2 is working
-describe('/hello/BigCommerce_123', function () {
+describe(testURL21, function () {
     it('should return 200', function (done) {
-        http.get('http://localhost:3000/hello/BigCommerce_123', function (res) {
+        http.get(testURL21, function (res) {
             assert.equal(200, res.statusCode);
             done();
         });
     });
 
-    it('should say "Hello BigCommerce_123"', function (done) {
-        http.get('http://localhost:3000/hello/BigCommerce_123', function (res) {
+    it('should say "Hello ' + name1 +'"', function (done) {
+        http.get(testURL21, function (res) {
             var str = '';
 
             res.on('data', function (data) {
@@ -67,7 +79,7 @@ describe('/hello/BigCommerce_123', function () {
             });
 
             res.on('end', function () {
-                assert.equal('Hello BigCommerce_123', str);
+                assert.equal('Hello ' + name1, str);
                 done();
             });
         });
@@ -75,9 +87,9 @@ describe('/hello/BigCommerce_123', function () {
 });
 
 // Test if :name only consists of a-z, A-Z, 0-9 and _(underscore)
-describe('/hello/BigCommerce@', function () {
+describe(testURL22, function () {
     it('should return 404', function (done) {
-        http.get('http://localhost:3000/hello/BigCommerce@', function (res) {
+        http.get(testURL22, function (res) {
             assert.equal(404, res.statusCode);
             done();
         });
@@ -85,16 +97,16 @@ describe('/hello/BigCommerce@', function () {
 });
 
 // Test if part 3(User without tweet) is working
-describe('/histogram/sportparagon', function () {
+describe(testURL31, function () {
     it('should return 200', function (done) {
-        http.get('http://localhost:3000/histogram/sportparagon', function (res) {
+        http.get(testURL31, function (res) {
             assert.equal(200, res.statusCode);
             done();
         });
     });
 
-    it('should say "There is no tweet from sportparagon"', function (done) {
-        http.get('http://localhost:3000/histogram/sportparagon', function (res) {
+    it('should say "There is no tweet from ' + twitterID1 + '"', function (done) {
+        http.get(testURL31, function (res) {
             var str = '';
 
             res.on('data', function (data) {
@@ -102,7 +114,7 @@ describe('/histogram/sportparagon', function () {
             });
 
             res.on('end', function () {
-                assert.equal('There is no tweet from sportparagon', str);
+                assert.equal('There is no tweet from ' + twitterID1, str);
                 done();
             });
         });
@@ -110,9 +122,9 @@ describe('/histogram/sportparagon', function () {
 });
 
 // Test if part 3(User with tweet) is working
-describe('/histogram/BigCommerce', function () {
+describe(testURL32, function () {
     it('should return 200', function (done) {
-        http.get('http://localhost:3000/histogram/BigCommerce', function (res) {
+        http.get(testURL32, function (res) {
             assert.equal(200, res.statusCode);
             done();
         });
