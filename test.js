@@ -78,3 +78,27 @@ describe('/hello/BigCommerce@', function () {
         });
     });
 });
+
+describe('/histogram/sportparagon', function () {
+    it('should return 200', function (done) {
+        http.get('http://localhost:3000/histogram/sportparagon', function (res) {
+            assert.equal(200, res.statusCode);
+            done();
+        });
+    });
+
+    it('should say "There is no tweet from sportparagon"', function (done) {
+        http.get('http://localhost:3000/histogram/sportparagon', function (res) {
+            var str = '';
+
+            res.on('data', function (data) {
+                str += data;
+            });
+
+            res.on('end', function () {
+                assert.equal('There is no tweet from sportparagon', str);
+                done();
+            });
+        });
+    });
+});
